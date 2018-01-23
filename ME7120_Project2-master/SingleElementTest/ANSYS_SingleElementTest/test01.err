@@ -1,0 +1,28 @@
+/COM,ANSYS RELEASE 12.1    UP20091102       16:01:48    12/02/2016
+
+ *** WARNING ***                         CP =       2.652   TIME= 16:08:25
+ No previous ZOOM or more than five backward ZOOMs in window 1.  The     
+ /ZOOM command is ignored.                                               
+
+ *** WARNING ***                         CP =       6.334   TIME= 16:12:50
+ Structural elements without mid nodes usually produce much more         
+ accurate results in quad or brick shape.                                
+
+ *** WARNING ***                         CP =       6.380   TIME= 16:13:02
+ Volume 1 is being meshed entirely with SOLID45 tetrahedra, which can    
+ be much less accurate than bricks.  Use quadratic (10-node) tetrahedra  
+ if available.                                                           
+
+ *** WARNING ***                         CP =       7.660   TIME= 16:14:21
+ Structural elements without mid nodes usually produce much more         
+ accurate results in quad or brick shape.                                
+
+ *** WARNING ***                         CP =      26.941   TIME= 16:31:59
+ The current solution may have been produced using different model or    
+ boundary condition data than is currently stored.  POST1 results may    
+ be erroneous unless you perform a new solution using the stored data.   
+
+ *** WARNING ***                         CP =      27.472   TIME= 16:32:33
+ The current solution may have been produced using different model or    
+ boundary condition data than is currently stored.  POST1 results may    
+ be erroneous unless you perform a new solution using the stored data.   
