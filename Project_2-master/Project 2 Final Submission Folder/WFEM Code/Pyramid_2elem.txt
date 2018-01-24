@@ -1,0 +1,54 @@
+%variables
+%All of these actions are not the most efficient for this problem.
+
+element properties
+% Beam format
+% E G rho
+steel(1:3)
+
+brick2 elements
+%node1 node2 node3 node4 node5 node6 node7 node8 propertynumber
+1 2 3 4 5 6 7 8 1
+5 6 7 8 9 10 11 12 1
+
+nodes
+% I can include comment lines
+% node num, x y z, Node number isn't ever stored in nodes matrix
+1    -37e-9    -37e-9    0
+2     37e-9    -37e-9    0
+3     37e-9     37e-9    0
+4    -37e-9     37e-9    0
+5    -22e-9    -22e-9   95e-9
+6     22e-9    -22e-9   95e-9
+7     22e-9     22e-9   95e-9
+8    -22e-9     22e-9   95e-9
+9    -5e-9     -5e-9    190e-9
+10    5e-9     -5e-9    190e-9
+11    5e-9      5e-9    190e-9
+12   -5e-9      5e-9    190e-9
+
+points
+1 1 1 1
+
+fix clamp
+1
+2
+3
+4
+
+
+load 
+9  1 -10e-9/4
+10 1 -10e-9/4
+11 1 -10e-9/4
+12 1 -10e-9/4
+
+actions
+staticanalysis
+plotdeformed
+%Xg=nonzeros(X);
+%save('GlobalDeflections.mat','Xg');
+%save('Nodes.mat','nodes');
+X
+
+end
