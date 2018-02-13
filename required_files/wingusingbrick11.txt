@@ -1,0 +1,104 @@
+variables
+%All of these actions are not the most efficient for this problem.
+t1=10
+t2=10
+a=1778.01
+b=63.61
+l=285.94
+
+element properties
+% Beam format
+% E G rho 
+%aluminum(1:3)
+7.308e7 2.747e7 2.71e-6 
+
+%Note that these were defined above. I can use variables in my input file.
+% I also used "steel" as a property. WFEM has some of these predefined. 
+% Run "units" and type "who" to see variables/values available inside your
+% input file
+
+Brick_project2 elements
+%node1 node2 node3 pointnum (beam properties number)
+1 2 3 4 5 6 7 8 1 
+
+nodes
+% I can include comment lines
+% node num, x y z, Node number isn't ever stored in nodes matrix
+1	0 0 0
+2	0 0 t1
+3	0 l t1
+4	0 l 0
+5	a b 0
+6	a b t2
+7	a l-b t2
+8	a l-b 0
+
+
+
+
+% need to figure out what this block is for
+points
+1 1 1 1
+
+fix clamp
+1
+2
+3
+4
+% The preceeding put a clamp boundary condition on node 1.
+
+fix surfaceball
+5 1 1 0
+6 1 1 0
+7 1 1 0
+8 1 1 0
+%10 1 1 0
+
+
+%fix rod
+%1 2 1
+%2 3 1
+%4 5 1
+%5 6 1
+%7 8 1
+%8 9 1
+%10 11 1
+%11 12 1
+
+load 
+% Node DOF Force
+%10 3 -10
+%11 3 -10
+%12 3 -10
+%16 3 -10
+
+
+actions
+modalanalysis
+who
+fs %dump sorted natural frequencies to the screen
+% The stuff inside actions is simply executed at the wfem prompt. Any
+% Matlab command can also be executed here. For example, you could double
+% the mass matrix then do another modal analysis. 
+% This will display natural frequencies and prompt for mode shape display
+%if uncommented
+modalreview
+fsold=fs %Let's store them for later comparison
+M=M/4; %Dividing M by 4 should double the natural frequencies
+fs=[]; % WFEM won't run another modal analysis unless I force it to 
+%It's smart enough to know that it has already been done, so I need to 
+%clear the results to it is forced to regenerate them with another
+%modalanalysis.
+modalanalysis
+disp('Natural Frequencies in KHz')
+fprintf('%7.3f %7.3f\n',[fsold'; fs'])
+disp('See, the natural frequency doubled as expected') % I wrote this out 
+%to the output for the user to read after execution.
+% Uncommenting this line will cause an exit from WFEM immediately after 
+% execution
+%end
+%Let's do static analysis
+staticanalysis
+plotdeformed
+%Here are the %%displacements, X
+%X

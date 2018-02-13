@@ -1,0 +1,52 @@
+variables
+%All of these actions are not the most efficient for this problem.
+b1 = 74*nm
+h1 = 74*nm
+b2 = 10*nm
+h2 = 10*nm 
+l=190*nm 
+Ixx1=(1/12)*(h1^3)*b1
+Ixx2=(1/12)*(h2^3)*b2
+Iyy1=(1/12)*h1*(b1^3)
+Iyy2=(1/12)*h2*(b2^3)
+J1=0.95*(Ixx1+Iyy1)
+J2=0.95*(Ixx2+Iyy2)
+
+element properties
+% Beam format
+% E G rho A1     A2    J1 J2 Ixx1 Ixx2 Iyy1 Iyy2 
+steel    b1*h1  b2*h2  J1 J2 Ixx1 Ixx2 Iyy1 Iyy2 
+
+
+cjs elements
+%node1 node2 pointnum (beam properties number)
+1 2 1 1
+
+
+nodes
+% I can include comment lines
+% node num, x y z, Node number isn't ever stored in nodes matrix
+1 0 0 0 
+2 0 l 0 
+
+
+points
+1 1 1 1
+
+fix clamp
+1
+% The preceeding put a clamp boundary condition on node 1.
+
+load 
+2 1 1e-8
+
+actions
+staticanalysis
+plotdeformed
+%Xg=nonzeros(X);
+%save('GlobalDeflections.mat','Xg');
+%save('Nodes.mat','nodes');
+X
+
+end
+

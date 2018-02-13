@@ -1,0 +1,11 @@
+
+
+
+ SOLUTION HISTORY INFORMATION FOR JOB: Tapered_beam.mntr                                                                                                                                                                                                                                                   
+ ANSYS RELEASE 17.0                     00:07:30    10/28/2016
+
+  LOAD   SUB-  NO.  NO.    TOTL  INCREMENT    TOTAL         VARIAB 1     VARIAB 2     VARIAB 3
+  STEP   STEP ATTMP ITER   ITER  TIME/LFACT   TIME/LFACT    MONITOR      MONITOR      MONITOR
+                                                             Wall         MxDs         MxPl
+
+     1      1    1     1      1     1.0000       1.0000      0.13408     -0.39267E-03  0.78886E-30
