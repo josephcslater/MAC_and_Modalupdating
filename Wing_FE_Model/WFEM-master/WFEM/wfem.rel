@@ -1,0 +1,150 @@
+;; RefTeX parse info file
+;; File: /Users/jslater/Documents/MyMath/WFEM/wfem.tex
+;; User: jslater (Joseph C. Slater)
+
+(set reftex-docstruct-symbol '(
+
+
+(xr nil "\\\\\\\\\\\\")
+
+(index-tags "idx")
+
+(is-multi nil)
+
+(bibview-cache)
+
+(master-dir . "/Users/jslater/Documents/MyMath/WFEM/")
+
+(label-numbers)
+
+(bof "/Users/jslater/Documents/MyMath/WFEM/wfem.tex")
+
+("listing:#1" "s" "#2, #1. }]{ #1}}} \\newcommand{\\lstref}[1]{(see listing \\ref{listing:#1}, page \\pageref{listing:#1})}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil)
+
+(toc "toc" "    1 Anatomy of the body of the code" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 2 "1" "\\section{Anatomy of the body of the code}" 2305)
+
+(toc "toc" "      1.1 Linear Dynamic Analysis" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "1.1" "\\subsection{Linear Dynamic Analysis}" 2998)
+
+(toc "toc" "      1.2 Guyan Reduction" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "1.2" "\\subsection{Guyan Reduction}" 3394)
+
+(toc "toc" "      1.3 Plotting" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "1.3" "\\subsection{Plotting}" 3597)
+
+(toc "toc" "      1.4 Plotting Stresses/Strains (Not completed)" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "1.4" "\\subsection{Plotting Stresses/Strains (Not completed)}" 4091)
+
+(toc "toc" "    2 Entering data" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 2 "2" "\\section{Entering data}" 4441)
+
+("example.txt" "s" "%" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil)
+
+(toc "toc" "      2.1 Units" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "2.1" "\\subsection{Units}" 7267)
+
+(toc "toc" "      2.2 Defined Constants" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "2.2" "\\subsection{Defined Constants}" 7957)
+
+(toc "toc" "      2.3 Variables" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "2.3" "\\subsection{Variables}" 8417)
+
+(toc "toc" "      2.4 Parameters" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "2.4" "\\subsection{Parameters}" 9159)
+
+(toc "toc" "      2.5 Defining Nodes" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "2.5" "\\subsection{Defining Nodes}" 10585)
+
+("command:nodes" "s" "Nodes are defined subsequent to the \\command{nodes} command. the format is \\begin{lstlisting} nodes " "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil)
+
+(toc "toc" "    3 Meshing" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 2 "3" "\\section{Meshing}" 11065)
+
+(toc "toc" "    4 Boundary Conditions and Constraints" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 2 "4" "\\section{Boundary Conditions and Constraints}" 13332)
+
+("sec:bcnconstr" "s" "Boundary conditions and constraints are applied using the \\command{fix} and \\command{constrain} comm" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil)
+
+(toc "toc" "    5 Applied Static Loads" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 2 "5" "\\section{Applied Static Loads}" 15819)
+
+("staticloads" "s" "Application of a static load is performed using the \\command{load} command. Subsequent lines list th" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil)
+
+(toc "toc" "    6 Actions" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 2 "6" "\\section{Actions}" 16199)
+
+("sec:actions" "s" "Just as element routines act on the modal, more global actions are performed by action routines. Man" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil)
+
+(toc "toc" "      6.1 plotundeformed" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "6.1" "\\subsection{plotundeformed}" 16958)
+
+(toc "toc" "      6.2 findinitialstrain" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "6.2" "\\subsection{findinitialstrain}" 17112)
+
+(toc "toc" "      6.3 staticanalysis" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "6.3" "\\subsection{staticanalysis}" 17390)
+
+(toc "toc" "      6.4 plotdeformed" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "6.4" "\\subsection{plotdeformed}" 17669)
+
+(toc "toc" "      6.5 modalanalysis" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "6.5" "\\subsection{modalanalysis}" 17821)
+
+(toc "toc" "      6.6 modalreview" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "6.6" "\\subsection{modalreview}" 18070)
+
+(toc "toc" "      6.7 reducedofs" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "6.7" "\\subsection{reducedofs}" 18248)
+
+(toc "toc" "      6.8 Find Inertia" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "6.8" "\\subsection{Find Inertia}" 18606)
+
+(toc "toc" "      6.9 planefit" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "6.9" "\\subsection{planefit}" 18775)
+
+(toc "toc" "      6.10 end" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "6.10" "\\subsection{end}" 19002)
+
+(toc "toc" "      6.11 M\\protect{\\textsc{atlab}} commands" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "6.11" "\\subsection{M\\protect{\\textsc{atlab}} commands}" 19129)
+
+(toc "toc" "    7 Elements" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 2 "7" "\\section{Elements}" 19572)
+
+("sec:elements" "s" "\\subsection{Element modes} Elements are implemented through modal function calls to m-files of the s" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil)
+
+(toc "toc" "      7.1 Element modes" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "7.1" "\\subsection{Element modes}" 19612)
+
+(toc "toc" "      7.2 Required element modes" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "7.2" "\\subsection{Required element modes}" 20364)
+
+(toc "toc" "        7.2.1 \\command{generate}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 4 "7.2.1" "\\subsubsection{\\command{generate}}" 20400)
+
+(toc "toc" "        7.2.2 \\command{make}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 4 "7.2.2" "\\subsubsection{\\command{make}}" 20723)
+
+(toc "toc" "      7.3 Highly recommended modes" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "7.3" "\\subsection{Highly recommended modes}" 21402)
+
+(toc "toc" "        7.3.1 \\command{stressandstrain}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 4 "7.3.1" "\\subsubsection{\\command{stressandstrain}}" 21440)
+
+(toc "toc" "        7.3.2 \\command{buckle}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 4 "7.3.2" "\\subsubsection{\\command{buckle}}" 21482)
+
+(toc "toc" "      7.4 Optional modes" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "7.4" "\\subsection{Optional modes}" 21515)
+
+(toc "toc" "        7.4.1 numofnodes" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 4 "7.4.1" "\\subsubsection{numofnodes}" 21543)
+
+(toc "toc" "      7.5 Element tools available" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "7.5" "\\subsection{Element tools available}" 21964)
+
+(toc "toc" "        7.5.1 Gauss Legendre Integration" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 4 "7.5.1" "\\subsubsection{Gauss Legendre Integration}" 22001)
+
+(toc "toc" "      7.6 Element types available" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 3 "7.6" "\\subsection{Element types available}" 22744)
+
+(toc "toc" "        7.6.1 \\command{rod3}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 4 "7.6.1" "\\subsubsection{\\command{rod3}}" 22782)
+
+("el:rod3" "s" "\\index{rod3}\\index{Elements!Rod} The \\command{rod} element is a simple constant-cross section two-no" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil)
+
+(index "idx" "\\subsubsection{\\command{rod3}}\\label{el:rod3}\\index{rod3}\\index{Elements!Rod}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" 22601 "rod3" "rod3" "rod3" "rod3" nil)
+
+(index "idx" "\\subsubsection{\\command{rod3}}\\label{el:rod3}\\index{rod3}\\index{Elements!Rod}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" 22613 "Elements!Rod" "Elements!Rod" "Elements ! Rod" "elements!rod" nil)
+
+(toc "toc" "        7.6.2 \\command{rod3t}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 4 "7.6.2" "\\subsubsection{\\command{rod3t}}" 25692)
+
+("el:rod3t" "s" "\\index{rod3t}\\index{Elements!Rod!Thermal} The \\command{rod3t} element is a simple constant-cross sec" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil)
+
+(index "idx" "\\subsubsection{\\command{rod3t}}\\label{el:rod3t}\\index{rod3t}\\index{Elements!Rod!Thermal}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" 25513 "rod3t" "rod3t" "rod3t" "rod3t" nil)
+
+(index "idx" "\\subsubsection{\\command{rod3t}}\\label{el:rod3t}\\index{rod3t}\\index{Elements!Rod!Thermal}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" 25526 "Elements!Rod!Thermal" "Elements!Rod!Thermal" "Elements ! Rod ! Thermal" "elements!rod!thermal" nil)
+
+(toc "toc" "        7.6.3 \\command{beam3}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 4 "7.6.3" "\\subsubsection{\\command{beam3}}" 27520)
+
+("el:beam3" "s" "\\index{beam3}\\index{Elements!Beam} The \\command{beam3} element is a three-noded Euler-Bernoulli beam" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil)
+
+(index "idx" "\\subsubsection{\\command{beam3}}\\label{el:beam3}\\index{beam3}\\index{Elements!Beam}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" 27341 "beam3" "beam3" "beam3" "beam3" nil)
+
+(index "idx" "\\subsubsection{\\command{beam3}}\\label{el:beam3}\\index{beam3}\\index{Elements!Beam}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" 27354 "Elements!Beam" "Elements!Beam" "Elements ! Beam" "elements!beam" nil)
+
+(toc "toc" "        7.6.4 \\command{inertia}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 4 "7.6.4" "\\subsubsection{\\command{inertia}}" 34635)
+
+("el:inertia" "s" "The \\command{inertia} element adds point masses and inertias. The inertia properties can be entered " "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil)
+
+(toc "toc" "        7.6.5 \\command{panel1}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 4 "7.6.5" "\\subsubsection{\\command{panel1}}" 35332)
+
+(toc "toc" "        7.6.6 \\command{sensor}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 4 "7.6.6" "\\subsubsection{\\command{sensor}}" 35715)
+
+(toc "toc" "        7.6.7 \\command{surfacenode}" "/Users/jslater/Documents/MyMath/WFEM/wfem.tex" nil 4 "7.6.7" "\\subsubsection{\\command{surfacenode}}" 36065)
+
+(eof "/Users/jslater/Documents/MyMath/WFEM/wfem.tex")
+))
+

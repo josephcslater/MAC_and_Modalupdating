@@ -1,0 +1,19 @@
+variables
+units
+
+element properties
+%    E          rho      A   m s l alpha         alim thermalinput
+aluminum(1) aluminum(3) 0.01 0 0 0 aluminum(4)  0.000 2
+
+nodes
+1 0 -1 0
+2  0 1 0
+
+rod3t elements
+1 2 1
+
+actions
+[Mr,Kr,T,master,slave,zerodofs]=guyan(M,K);
+Mr=full(Mr);
+Kr=full(Kr);
+Bthermalr=T'*Bthermal;

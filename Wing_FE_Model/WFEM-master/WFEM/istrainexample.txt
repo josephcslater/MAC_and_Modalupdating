@@ -1,0 +1,47 @@
+parameters
+t=1
+
+
+element properties
+% Beam format
+% E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3
+  1 1 1   1  1  1  1  1  1  1    1    1    1    1    1  .1 0 0 0 0 0
+  1 1 1   1  1  1  1  1  1  1    1    1    1    1    1 
+
+
+nodes
+% node num, x y z, Node number isn't ever stored in nodes matrix
+1 0 0 0 
+2 1 0 0
+%3 1 1 0 
+
+beam3 elements
+%node1 node2 node3 pointnum (beam properties number)
+1 2 1
+%2 3 2
+%3 1 2
+
+points
+1  1 1 1
+
+%fix clamp
+%1
+% The preceeding put a clamp boundary condition on node 1.
+
+%load 
+%2 1 10
+
+fix clamp
+1
+
+%2 0 0 1
+%
+%fix surfaceball
+%3 0 0 1
+%
+% The preceeding from fix pin on would create a simply supported
+% beam in the x-y plane. Note that we needed to fix the translation
+% in the z direction of the center node. We will still have torsion
+% of the rod in it's middle about the x-axis, and extension of node
+% 3 in the x-direction. Don't forget that the blank lines must be
+% uncommented out to signify the end of data entry.

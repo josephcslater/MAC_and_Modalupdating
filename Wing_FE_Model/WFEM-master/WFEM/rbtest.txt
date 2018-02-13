@@ -1,0 +1,29 @@
+variables
+t=.03
+
+element properties
+% Beam format
+% E G rho A J Izz Iyy
+aluminum t^2 .9*1/6*t^4 1/12*t^4 1/12*t^4
+
+nodes
+% node num, x y z, Node number isn't ever stored in nodes matrix
+1 0 0 0 
+2 0 1/2 0 
+3 0 1 0 
+
+beam3 elements
+%node1 node2 node3 pointnum (beam properties number)
+1 2 1
+2 3 1
+
+constrain rbeam
+1 2
+1 3
+1 4
+1 5
+
+actions
+[Mr,Kr,Tr,master,slave]=guyan(M,K,(1:6));
+full(Mr)
+end

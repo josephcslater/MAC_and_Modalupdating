@@ -1,0 +1,17 @@
+element properties
+%E rho A
+% 4.1369e10 1.6608e3 2.4322e-4
+%1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+4 5 6 1.1 .5 .3 .3
+
+nodes
+1 0   0 0
+2 0  2 0
+
+beam3 elements
+1 2 1
+
+
+action
+modalanalysis
+modalreview

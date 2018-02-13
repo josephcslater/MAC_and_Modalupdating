@@ -1,0 +1,40 @@
+variables
+martin
+rigidmasstotal=rigidmass
+rigidinertiatotal=rigidinertia
+units
+
+element properties
+rigidmasstotal rigidinertiatotal
+aluminum(1) aluminum(2) 0 .0001 1.666e-7 8.333e-8 8.333e-8
+
+nodes
+1 0 0 0
+2  1 0 0 
+3 -1  0 0
+
+points
+1 0 0 0
+
+inertia element
+3 1
+2 1
+
+beam3 element
+2 3 1 1 2
+
+constrain rbeam
+1 2
+1 3
+
+actions
+[Mr,Kr,T,master,slave,zerodofs]=guyan(M,K,[1:6]+12);
+Mr=full(Mr);
+Kr=full(Kr);
+iMr=inv(Mr);
+disp('<<<total mass>>>')
+1/iMr(1,1)
+disp('<<<mass moment of inertia about center, large values direction>>>')
+1/iMr(6,6)
+disp('<<<mass moment of inertia about center, small value direction>>>')
+1/iMr(4,4)

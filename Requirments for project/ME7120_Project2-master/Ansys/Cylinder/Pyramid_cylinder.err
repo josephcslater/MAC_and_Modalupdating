@@ -1,6 +1,0 @@
-/COM,ANSYS RELEASE 12.1    UP20091102       19:38:17    12/02/2016
-
- *** WARNING ***                         CP =       1.201   TIME= 19:38:39
- Previous testing revealed that 12 of the 288 selected elements violate  
- shape warning limits.  To review warning messages, please see the       
- output or error file, or issue the CHECK command.                       

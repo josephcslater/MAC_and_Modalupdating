@@ -1,0 +1,629 @@
+\documentclass[12pt]{article}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{hhline}
+\usepackage{times}
+%\usepackage{tabularx}
+%\usepackage[pdfmark,colorlinks]{hyperref}
+\usepackage[colorlinks]{hyperref}
+\newcommand*{\sarg}[1]{\textit{#1}}
+\newcommand*{\command}[1]{\textsf{#1}}
+\newcommand*{\variable}[1]{\textit{#1}}
+%\newcommand*{\textsf}[1]{\textsf{\textbf{#1}}}
+\newcommand*{\varg}[1]{\textit{#1}}
+
+\lstset{basicstyle=\scriptsize}
+\newcommand{\includelisting}[2]{{\small\lstinputlisting[float,
+  frame=tlrb,caption={[#2]\label{listing:#1}#2, #1. }]{ #1}}}
+\newcommand{\lstref}[1]{(see listing \ref{listing:#1}, page
+  \pageref{listing:#1})}
+%\newenvironment{matlabcode}{\lstset{language=Matlab}\begin{lstlisting}{}}{\end{lstlisting}}%[numbers=left,numberstyle=\tiny]{numbers=left}
+
+\newif\ifpdf \ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue \fi
+
+\ifpdf \usepackage{graphicx} \else \usepackage{graphicx} \fi
+
+\textwidth = 6.5 in \textheight = 9 in \oddsidemargin = 0.0 in
+\evensidemargin = 0.0 in \topmargin = 0.0 in \headheight = 0.0 in
+\headsep = 0.0 in \parskip = 0.2in \parindent = 0.0in
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}
+
+
+\title{Wright Finite Element Method:\\
+  \small{An easily extensible research-oriented finite element code}}
+\author{Joseph C.~Slater} \date{\today}
+\begin{document}
+\lstset{language=Matlab,numbers=left,numberstyle=\tiny,keywordstyle=\bfseries,escapechar=!}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+Wright Finite Element Method (WFEM) is designed to be an
+easily extensible research-oriented structural finite element code.
+The design concept is that all ``parts'' of the model are actions by
+external codes. The central finite element code knows nothing about
+any particular element or boundary condition type. It depends on a
+completely self-capable code for implementing the ``method'' of the
+element or boundary condition. The advantage of this approach is that
+the code is able to handle the introduction of new elements without
+any modification of existing parts of the package. Further, additional
+capabilities can be added to elements without disruption to the main
+body of the code.
+
+\section{Anatomy of the body of the code}
+The main body of FEM is currently under construction, and likely will
+be indefinitely. In terms of performing analysis, this is not all that
+bad, since the real work of the code is handled internally to the
+element codes. The ability to find mode shapes and natural
+frequencies, plot deflections, and find stresses are separate aspects
+from the main body, and are performed by the element codes.
+\subsection{Running WFEM}
+To run WFEM, set your M\textsc{atlab}{}{} path to the WFEM directory and type \command{wfem}. WFEM will prompt you for an input file name. Alternatively, type \command{help wfem} for other means by which to start a run of WFEM.
+\subsection{Linear Dynamic Analysis}
+Finding mode shapes and natural frequencies of a linear model can be
+performed using \textsf{soeig.m} which uses Cholesky decomposition
+of the mass matrix and assumes nothing about the stiffness matrix,
+$K$, in terms of symmetry. However, no asymmetric capabilities have
+been added yet (the FEM code doesn't have the ability to make an
+asymmetric element).
+\subsection{Guyan Reduction}
+Guyan reduction of the model can be easily performed using
+\textsf{guyan.m}. In the automatic mode, it will remove DOFs with a
+mass/stiffness below a predefined threshold.
+\subsection{Plotting}
+The ability to be plotted is one that is defined internally to an
+element. The plotting routine knows
+nothing about elements, only about nodes, their locations, and how
+they are connected (via lines, surfaces...). Lines and patches are
+defined by what nodes they connect, not by geometry.
+
+To draw lines within elements, see the \textsf{beam3example.m} element. Look for the lines variable. Appending the pair of node numbers to be connected by line to this array ensures that it will be drawn by WFEM. Explanation for how to draw a surface is also given in the comments.
+
+
+To draw surfaces, see the generate section of the \textsf{panel1.m} element. The color of a quadrilateral patch is defined by \command{panelcolor}. Adding a patch to be drawn by listing its node numbers (clockwise or counterclockwise) followed by its color is all that's needed to assure that it is drawn in static and dynamic situations.
+
+Plotting of modes
+is easily accomplished internally by WFEM by adding mode shapes to the undeformed nodal
+location, and plotting all predefined nodes, lines, and patches. Element authors need do nothing to enable plotting of mode shapes/deformed static shapes.
+\subsection{Plotting Stresses/Strains (Not completed)}
+Plotting stresses and strains is accomplishes by using the
+\command{stress} and \command{strain} matrices. These are actually
+stresses and strain levels corresponding to the appropriate lines and
+patches and are placed in those matrices at the correct locations by
+the appropriate element code.
+\section{Entering data}
+For the sake of ease of use, it is best to define nodes and element property types before elements are defined. An example input code is shown in listing \ref{listing:example.txt} on page \pageref{example.txt}.
+%\begin{lstlisting}
+%\textsf{example.txt}
+%\lstinputlisting[numbers=left]
+\includelisting{example.txt}{A simple truss example\label{example.txt}}
+%\end{lstlisting}
+The first thing that one notices about the file is that the '\%' can
+be used to add comments throughout the file, at any location, even in
+the middle of data. The '\%' must reside in the \emph{first column} for the
+comment to be recognized as a comment character. That means \emph{you cannot put a comment at the end of a line of data.}
+
+Properties are defined after the `element properties' line. Some flexibility is allowed for typographical errors, but this flexibility shouldn't be considered a poetic license. Each type of element can have its own method for defining element properties. Elements can also have multiple methods of data input. For example, it would be quite reasonable to allow for a beam element that has constant properties along its length. As a result, only 7 entries, $\rho, A, I_{yy}, I_{zz}, J, E,$ and $G$ would be required. For example, see the \command{beam3} element documentation in section \ref{el:beam3} regarding allowable material input formats and how they are interpreted. The WFEM code makes no attempt to understand these values at all. It simply loads them and stores them where the element codes can easily find them. Element property indices are identified by their row number. In the example shown (See Listing \ref{listing:example.txt}), there are two element properties given. All elements defined later must refer to one of these two definitions unless the element has no properties (we're staying very flexible here.).
+
+Nodes are defined subsequent to the
+\command{nodes} command (see section \ref{command:nodes}). Unlike elements, the first value on each line is the node number. This example shows some of the flexibility of the reader in that it allows nodes to be defined before or after the elements. In fact, you can alternately define nodes and elements. This is convenient if you have an existing model and would like to simply tack on an additional substructure to the end.
+
+Elements are defined using `\sarg{elementname} \command{elements}' (in
+this case \command{beam3}). There must exist a function
+\sarg{elementname}\textsf{.m}. Rows subsequent to such a command are
+defined to be of that type. The definition of elements is concluded
+with a blank line. Keep in mind that the main body of the finite
+element code knows \emph{nothing} about any element, so adding an
+element to the code means writing a function file to do all of the
+work of using the element.
+
+\subsection{Units}
+Like any code, as long as consistent units are used, the code doesn't care what units you are using. The presumption of the code, however, is that values are entered in mks units (kilogram, meter, seconds). To assist with this, some built in constants are available for doing conversions for the user. For example, to enter 1 inch  using presuming mks units, one would instead type \variable{1*in}. Conversions from mks to th inch-pound system are not available directly, but can always be achieved by inverting the conversions. Currently defined units are \variable{in, ft, yard, lbf, lbm, slug, psi, deg, gm, pm, angstrom, nm, $\mu$m (mum), mm, cm} and \variable{km}.
+
+\subsection{Defined Constants}
+The gravitational constant \variable{g} is also defined to be 9.80665 (standard gravity is defined to be at sea level and latitude 45\textsuperscript{$\circ$}.
+
+Material propeties, E, G, $\rho$, are available instead of typing them out as the variables \variable{aluminum6061} (also \variable{aluminum}), \variable{steelsheet,} and \variable{steelhot} (also \variable{steel}). Others can easily be added to \textsf{units.m}.
+
+\subsection{Variables}
+Variables can also be used to define geometries.
+Variables are generated by definitions (e.g. \command{a=2}) following
+the variable command (\command{variable} on a line by itself).
+Variable can be defined using any lowercase letter with the
+exceptions of $i$ and $j$ which are reserved for $i=j=\sqrt{-1}$.
+Variables can also be lowercase letters followed by a number. Other
+variable names may be used with care. The guidelines given here are
+provided to simplify selection of names. As long as the variable name
+doesn't conflict with an internally used variable name, it is
+acceptable to use. A warning will be generated if an illegal choice is
+used.
+\\Example:\\
+\begin{lstlisting}
+  command
+  s=1
+\end{lstlisting}
+
+\subsection{Parameters}
+The third, optional, argument to \command{wfem} is a vector of parameters that are used in the problem definition of the input file. If this vector is available, the input file may use variables \variable{parameter(i)} where \variable{i} has a numerical value between $1$ and the total length of the input parameter vector. The advantage of parameters is that multiple similar cases can be run without having to repeatedly edit the input file. For instance,
+\begin{lstlisting}
+  for i=1:10
+  wfem('inputfilename.txt',[],i)
+  end
+\end{lstlisting}
+would run the case defined in \textsf{inputfilename.txt} to be run 10 times, with the quantity referred to as \variable{parameter(1)} in the input file varying between 1 and 10.
+% \subsection{Globals}
+% Globals (variables that can be defined in the \textsc{Matlab}
+% workspace) can also be used to define geometries. Globals are
+% generated by listing the variable names (e.g. \command{a=2}) following
+% the global command (\command{parameter} on a line by itself). Globals
+% can be defined using any uppercase letter with the exceptions of $M,
+% C, K, F$ and $D$ which are reserved for internal use.  The guidelines
+% given here are provided to simplify selection of names.  As long as
+% the parameter name doesn't conflict with an internally used variable
+% name, it is acceptable to use.  A warning will be generated if an
+% illegal choice is used.
+
+\subsection{Defining Nodes}
+\label{command:nodes}
+Nodes are defined subsequent to the \command{nodes} command. the format is
+\begin{lstlisting}
+nodes
+nodenum xlocation ylocation zlocation
+%This is a comment
+\end{lstlisting}
+Definition of nodes ends with a blank line. Note that the node numbers are listed in the format for convenience only. The actually assigned node number is incremented by one for each new line of data. That is, node numbers monotonically increase by one.
+
+\section{Meshing}
+Meshing in this code is different than meshing in a traditional finite element code. In traditional finite elements, a geometry of an object is defined, the internal region of the body is divided by algorithm into elements, then  nodes are automatically generated. In WFEM, meshing is the repeating of a substructure multiple times in a one dimensional arrangement. To do this, the command \command{bay element} is entered.  Everything between this command and the command \command{repeat\ldots} is considered to be the definition of what one bay looks like. This should include \emph{only} elements. Elements must be \emph{bay capable}(See section \ref{sec:elements}), as the bay meshing requires some knowledge to be obtained regarding the elements. Including non-bay capable elements will lead to erroneous results. No error checking for this exist. The \command{repeat} command is formated as:\\
+ \command{repeat bay} \sarg{l} \command{ times. Attach } \varg{M}
+ \command{to} \varg{N}.\\
+\noindent Here the nodes listed in \varg{M} are the innermost nodes of the unit bay, and the nodes listed in \varg{N} are the outermost nodes, or free nodes. Another way to think of this is that the nodes \varg{N} are currently the furthest extending nodes in what will become a series of bays. The nodes \varg{M} are the starting nodes of this unit. For the next bay, the starting nodes will be \varg{N}.For example, the code segment:
+\begin{lstlisting}
+bay element
+beam3 element
+1 2 1
+
+repeat bay 3 times. Attach 1 to 2.
+\end{lstlisting}
+will create will create a four element model of a beam by creating the first element (connecting nodes 1 and 2) then creating 3 more elements.
+
+%\textsf{compactexample.txt}
+%\lstinputlisting[numbers=left]{compactexample.txt}
+ \includelisting{compactexample.txt}{A meshing example.}
+
+ Here \sarg{l} defines how many times the bay is to be repeated.
+ \varg{M} is a list of nodes defining the attachment nodes of the bay
+ that are attached to the existing defined structure. These can be
+ thought of as the starting nodes of the bay. These node numbers will
+ correspond to nodes \varg{N} of the next bay, where \varg{N} is the
+ list of the end, or exposed, nodes of the bay that subsequent bays
+ will be attached to.
+\section{Boundary Conditions and Constraints}\label{sec:bcnconstr}
+Boundary conditions and constraints are applied using the
+\command{fix} and \command{constrain} commands. They are coupled with
+the appropriate entity as \command{constrain} \sarg{clamp} or
+\command{fix} \sarg{pin}. The former command rigidly connects two
+nodes in all six degrees of freedom, and the second results in a pin
+connection at subsequently listed nodes. The commands are followed by
+lines describing individual boundary conditions/constraints, the
+format being specific to the type of constraint. The following table
+describes all available attachment types.
+%\begin{table}
+
+
+
+\begin{center}
+%\begin{tabularx}{6.25in}{|>{\hsize=.6\hsize\raggedright\arraybackslash}X|>{\hsize=.8\hsize\raggedright\arraybackslash}X|>{\hsize=1.6\hsize\raggedright\arraybackslash}X|} \hline
+{\small \begin{tabular}{|p{1.in}|p{1.5in}|p{1.5in}|p{.75in}|}
+  \hline
+  Attachment name&Description &Input Format&NASTRAN Support\\
+  \hhline{|====|} clamp & all degrees of freedom & node1 (node2), nodes must be coincident&Y\\
+  \hline pin & Thrust bearing hinge & node1 (node2) udv &N\\
+  \hline roller & Roller in track& node1 (node2) udv hinge, udv motion&N\\
+  \hline ball & Ball joint & node1 (node2)&N\\
+  \hline rod & rod with pins at each end& node1 node2&N\\
+  \hline rbeam &rigid (clamped) beam & node1 node2&Y\\
+  \hline surfaceball & 1 translation restricted & node1 (node2) udv translation&N\\
+  \hline surface & 1 trans + 3 rots restricted & node1 (node2) udv translation&N\\
+  \hline rigidbody& calculate inertia tensor relative to node& node1 0&N\\
+\hline
+\end{tabular}
+}%\end{table}
+\begin{enumerate}
+\item {Unit direction vectors must be orthogonal.}
+% \item {udv: unit direction vector.}
+\end{enumerate}
+
+
+\end{center}
+
+In cases of constraints, the appropriate DOFs of the second node are reduced (slaved) to those of node 1.
+
+The final attachment name is a constraint condition where rigid massless beams are presumed to connect all nodes, reducing the model to the single node \variable{node1}. All other constraints will be ignored under these circumstances. The dummy value $0$ is inserted for compatibility with other constrain condition formats. The action \command{[totalmass,INERTIATENSOR,CG]=findinertia} is necessary to obtain the rigid body parameters. See the file \textsf{examplerigidbeam.txt} for example usage.
+
+
+See example.txt (Listing \ref{listing:example.txt}) for an example
+application of a boundary condition.
+
+\section{Applied Static Loads}\label{staticloads}
+Application of a static load is performed using the \command{load}
+command. Subsequent lines list the node number, the degree of freedom
+number, and the amount of the load applied to that node at that degree
+of freedom. Loads must be in consistent units.  See Listing
+\ref{listing:example.txt} for an example of load application.
+\section{Actions}\label{sec:actions}
+Just as element routines act on the modal, more global actions are performed by action routines. Many actions are performed by default when a model is built. These include \command{assemblemk}, \command{applybcs}, \command{applyconstraint}, and \command{istrainforces}, their function being clear by their names. Additional detail regarding these action can be gleaned from the help provided in the code (for example \command{help assemblemk}). Additional actions currently available follow. Actions are intelligent enough to recognize when they cannot be performed without another preceding analysis. In the case that another action must take place first, an error is produced stating explicitly what action was needed.
+\subsection{plotundeformed}
+The action \command{plotundeformed} plots the as-defined structure and geometry, a useful tool in finding date entry errors.
+\subsection{findinitialstrain}
+The action \command{findinitialstrain} will apply the initial strain inducing loads and return the initial global deflections in the variable \variable{X}. The initially deformed structure is automatically drawn if graphical output is available.
+\subsection{staticanalysis}
+The action \command{staticanalysis} will apply the initial strain inducing loads and the prescribed loads and return the global deflections in the variable \variable{X}. The deformed structure is automatically drawn if graphical output is available.
+\subsection{plotdeformed}
+The action \command{plotdeformed} will plot the deformed structure under the previously solved for deflections \variable{X}.
+\subsection{modalanalysis}
+The action \command{modalanalysis} obtains the natural frequencies (in Hz) and mode shapes and stored them in the variables \variable{fs} and \variable{fms}. These results are also automatically saved to the restart file.
+\subsection{modalreview}
+The action \command{modalreview} is a poor-man script that runs through the results of modal analysis. Not very sophisticated, but it gets the job done.
+\subsection{reducedofs}
+The action \command{reducedofs} will reduce the degrees of freedom in the system to remove DOFS associated with boundary conditions and constraints. Matrices returned are \variable{Mr}, \variable{Kr} and \variable{Tr} where
+\begin{equation}
+M_r=T_r^T M T_r
+\end{equation}
+\noindent and
+\begin{equation}
+K_r=T_r^T K T_r
+\end{equation}
+\subsection{Find Inertia}
+[totalmass,INERTIATENSOR,CG]=FINDINERTIA solves for the inertia tensor
+  relative to the center of gravity, as well as the center of gravity.
+
+\subsection{planefit}
+The action \command{planefit} fit the best possible plane to the nodes containing surface elements. For best results, this plane should b closer to perpendicular to the $z$ axis than either of the others.
+\subsection{end}
+The action \command{end} will cause wfem to be exited, leaving the user back are the M\textsc{atlab} prompt.
+\subsection{M\protect{\textsc{atlab}} commands}
+A great deal of flexibility is obtained by recognizing that any M\textsc{atlab} command can be executed as an action. This allows manipulation of graphics, intermediate computations, and other miscellaneous actions not listed here to be performed. A warning will be given that the command are not explicitly defined, and that they are being passed directly to the M\textsc{atlab} interpreter.
+
+\section{Elements}\label{sec:elements}
+
+\subsection{Element modes}
+Elements are implemented through modal function calls to m-files of
+the same name as the element. The mode is essentially ``what action
+should be taken''. Additional information is passed to the element as
+needed, appropriate to the mode. Some modes must exist for WFEM to be
+able to do anything with the element. Some are recommended, which is
+admittedly subjective. Recommended means that the elements can be read
+into the data structure, and I think those modes are not necessary for
+elementary types of analysis (mode shapes, static deflection, linear
+simulation). Optional modes are those such as dynamic loads due to
+rotating coordinate systems, nonlinear stiffness terms, and stress and
+strain calculation capability.
+\subsection{Required element modes}
+\subsubsection{\command{generate}}
+\command{generate} takes the element data and puts all available
+element information into the next available element entry in the
+element data structure. If element information is missing, generate
+may optionally generate it (i.e. internal nodes in \command{beam3} are
+handled this way).
+\subsubsection{\command{make}}
+\command{make} takes element properties and nodal locations, generates
+the local coordinate finite element matrices, rotates them to global
+coordinates, and assembles them into the stiffness and mass matrices.
+It also generated the drawing properties for the element (points,
+lines, or surfaces.). These are used for easy and faster drawing of
+the deformed and undeformed structure.
+
+\command{make} is also used to generate entries in the control matrix,
+as well as nonlinear force flags in the nonlinear force vector. These
+allow generation of linear matrix models for control law design (in
+the first case) as well as nonlinear time simulations.
+\subsection{Highly recommended modes}
+\subsubsection{\command{stressandstrain}}
+\subsubsection{\command{buckle}}
+\subsection{Optional modes}
+\subsubsection{numofnodes}
+The \command{numofnodes} mode is executed as\\
+\varg{elementname}\command{('numofnodes',}\varg{eldata}\command{)}\\
+where \varg{eldata} is the row vector defining the element. It returns
+as an output the number of the defining parameters that are node
+numbers, starting from the left. This is required for
+\textsf{meshfem.m}, and thus is optional if the element isn't to be
+used for meshing.
+\subsection{Element tools available}
+\subsubsection{Gauss Legendre Integration}
+The file \textsf{gauss.m} makes Gauss Legendre integration in 1-3
+dimensions and up to 10th order simple with a single function call and
+a loop. Weights and gauss points are obtained using
+\command{([}\sarg{pg}\command{,}\sarg{wg}\command{]=gauss(}\sarg{n}\command{))}
+where \sarg{n} is a vector of length 1-3, each entry determining how
+many integration points to use in that direction. \sarg{pg} and
+\sarg{wg} are the resulting Gauss points and weights. \sarg{pg} is in
+the form
+\begin{displaymath}
+pg=\begin{bmatrix}
+x_{1}&y_{1}&z_{1}\\
+x_{2}&y_{2}&z_{2}\\
+\vdots&\vdots&\vdots\\
+\end{bmatrix}
+\end{displaymath}and \sarg{wg} is simply a list of weights corresponding to the points of \sarg{pg}.
+\subsection{Element types available}
+
+\subsubsection{\command{rod3}}\label{el:rod3}\index{rod3}\index{Elements!Rod}
+The \command{rod} element is a simple constant-cross section two-noded rod (spring) element with a consistent mass matrix. \marginpar{inconsistent mass matrix should be added later} It has linear shape functions. Cross section properties are assumed to be constant.
+
+The element may be defined by any of the following:\\
+%\begin{lstlisting}[numbers=left,numberstyle=\tiny]{numbers=left}
+\begin{lstlisting}
+  rod3 elements
+  node1 node2 node3 pointnumber materialnumber
+  node1 node2 pointnumber materialnumber
+  node1 node2 materialnumber
+\end{lstlisting}
+Only the first two nodes and the material number matter. The remainder of the input options are available only for simplicity of switching from \command{beam3} elements to \command{rod3} elements. See section \ref{el:beam3} on \command{beam3} elements for details of the meaning of other values.
+
+Material properties for the \command{rod3} element  are better referred to as rod
+properties. They are entered using the material properties command and
+can be entered as any of the following forms:
+\begin{lstlisting}
+  element properties
+  E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3
+  E G rho A1 A2 J1 J2 Izz1 Izz2 Iyy1 Iyy2
+  E G rho A J Izz Iyy
+  E G rho A J Izz Iyy sx2 sy2 sz2 srx2 sry2 srz2 distype
+   E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
+      mx2 my2 mz2 mrx2 mry2 mrz2
+  E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
+      sx2 sy2 sz2 srx2 sry2 srz2 distype
+  E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
+      mx2 my2 mz2 mrx2 mry2 mrz2 sx2 sy2 sz2 srx2 sry2 srz2 distype
+  E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
+      mx2 my2 mz2 mrx2 mry2 mrz3 mx3 my3 mz3 mrx3 mry3 mrz3
+  E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
+      mx2 my2 mz2 mrx2 mry2 mrz2 sx2 sy2 sz2 srx2 sry2 srz2 ...
+      mx3 my3 mz3 mrx3 mry3 mrz3 sx3 sy3 sz3 srx3 sry3 srz3 distype
+  E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
+      mx2 my2 mz2 mrx2 mry2 mrz2 sx2 sy2 sz2 srx2 sry2 srz2 ...
+      lx2 ly2 lz2 lrx2 lry2 lrz2
+  E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
+      mx2 my2 mz2 mrx2 mry2 mrz2 sx2 sy2 sz2 srx2 sry2 srz2 ...
+      lx2 ly2 lz2 lrx2 lry2 lrz2 ...
+      mx3 my3 mz3 mrx3 mry3 mrz3 sx3 sy3 sz3 srx3 sry3 srz3 ...
+      lx3 ly3 lz3 lrx3 lry3 lrz3
+  E rho A
+  E rho A m
+  E rho A m s
+  E rho A m s distype
+  E rho A m l distype
+  E rho A m s l
+\end{lstlisting}
+Property formats other than the last 6 add no capabilities but are available
+only for substituting \command{rod3} elements for \command{beam3} elements. \command{m}, \command{s}, and \command{l}
+stand for mean, standard deviation, or limit. A \command{distype} of $0$
+means Gaussian distribution. A \command{distype} of $-1$ means uniform distribution.
+
+\subsubsection{\command{rod3t}}\label{el:rod3t}\index{rod3t}\index{Elements!Rod!Thermal}
+The \command{rod3t} element is a simple constant-cross section two-noded rod (spring) element with a consistent mass matrix.  It has linear shape functions. Cross section properties are assumed to be constant. In can handle initial strain definitions as well as thermal strains that change over time.
+
+The element may be defined by any of the following:\\
+%\begin{lstlisting}[numbers=left,numberstyle=\tiny]{numbers=left}
+\begin{lstlisting}
+  rod3 elements
+  node1 node2 materialnumber
+\end{lstlisting}
+
+Material properties for the \command{rod3} element  are better referred to as rod
+properties. They are entered using the material properties command and
+can be entered as any of the following forms:
+\begin{lstlisting}
+  element properties
+  E rho A m s distype alpha alim thermalinput
+  E rho A m l distype alpha alim thermalinput
+  E rho A m s l       alpha alim thermalinput
+\end{lstlisting}
+The second 3 variables are for initial strains. \command{m}, \command{s}, and \command{l}
+stand for mean, standard deviation, or limit. A \command{distype} of $0$
+means Gaussian distribution. A \command{distype} of $-1$ means uniform distribution.
+
+\command{alpha} is the thermal coefficient of expansion. \command{alim} defines the maximum positive deviation of \command{alpha}, $\left(\delta\alpha\right)_\text{max}$. \command{thermalinput} allows temperature inputs to be applied to multiple elements simultaneously. $\alpha$ is allowed only to vary linearly at this time.  The thermal input matrix is \command{Bthermal}, with columns corresponding to the \command{thermalinput} numbers. The matrix \command{Bthermal} must be multiplied by the \emph{deviation} from the nominal temperature to obtain the psuedo-applied thermal load.
+
+
+\subsubsection{\command{beam3}}\label{el:beam3}\index{beam3}\index{Elements!Beam}
+The \command{beam3} element is a three-noded Euler-Bernoulli beam/rod/torsion element. It has sixth order shape functions for the beam deformations, and quadratic shape functions for torsion and extension deformations. Properties vary quadratically (or lower order) along the length of the element. The beam is asymmetric, allowing definition of the local coordinates for each element (see below). Second moment of area properties ($I_{yy}$ and $I_{zz}$) must be defined in the principle area coordinate frame. $J$ is the effective torsional polar moment of area. It should be equal to $I_{yy}+I_{zz}$ for circular cross sections, and less than the true polar moment of area for non-circular cross sections. For torsional inertia of the element, $I_0$ is calculated appropriately as $I_0=I_{yy}+I_{zz}$. Nodes are numbered 1-3-2, so that the extra node (3) is in the middle of the beam. Node three must be placed precisely in the middle of the beam if it is defined explicitly. Deviation will cause errors.
+
+
+The element may be defined by any of the following:\\
+%\begin{lstlisting}[numbers=left,numberstyle=\tiny]{numbers=left}
+\begin{lstlisting}
+  beam3 elements
+  node1 node2 node3 pointnumber materialnumber
+  node1 node2 pointnumber materialnumber
+  node1 node2 materialnumber
+\end{lstlisting}
+The point number is defined using the \command{points} command
+\lstref{example.txt} in the same fashion as the \command{nodes}
+command (Section \ref{command:nodes}). The location of the point,
+along with nodes 1 and 2, defines the $x-y$ plane. The local $x$ axis
+is from node 1 to node 2. The local $y$ axis is from node 1 to the
+point, but only the component perpendicular to the $x$ axis. The $z$
+axis is then known via the right hand rule.
+
+\begin{table}
+\begin{tabular}[h]{|c|c|c|c|c|}
+\hline
+%% Line 1
+%% Col. 1
+ &
+%% Col. 2
+SS mode 1&
+%% Col. 3
+SS mode 2 &
+%% Col. 4
+FF mode 2 &
+%% Col. 5
+FF mode 3
+\\ \hline
+%% Line 2
+%% Col. 1
+Continuous theory &
+%% Col. 2
+9.87 &
+%% Col. 3
+39.48 &
+%% Col. 4
+22.40 &
+%% Col. 5
+61.62
+\\ \hline
+%% Line 3
+%% Col. 1
+Single 6th order Element &
+%% Col. 2
+9.87 &
+%% Col. 3
+39.65 &
+%% Col. 4
+22.56 &
+%% Col. 5
+63.54
+\\ \hline
+%% Line 4
+%% Col. 1
+2 4th order Elements &
+%% Col. 2
+9.91 &
+%% Col. 3
+43.82 &
+%% Col. 4
+22.42 &
+%% Col. 5
+70.17
+\\ \hline
+\end{tabular}
+\caption{Quality of 6th order beam element for simply supported and free-free frequency determination. Coefficient to $\sqrt{EI/\rho A l^{2}}$.}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|l|r|c|c|r|}
+    \hline
+    Kind&$\omega=$&Boundary Cond.&Mode \# &\% Error\\
+    \hhline{|=====|}
+    Rod (Extension)&$\frac{\pi}{l}\sqrt{\frac{E}{\rho}}$&FF&2&10.27\\
+    \hline
+    Rod (Extension)&$\frac{\pi}{2l}\sqrt{\frac{E}{\rho}}$&CF&1&0.375\\
+    \hline
+    Rod (Extension)&$\frac{3\pi}{2l}\sqrt{\frac{E}{\rho}}$&CF&2&21.4\\
+    \hline
+    Rod (Torsion)&$\frac{\pi}{l}\sqrt{\frac{G}{\rho}}$&FF&2&10.27\\
+    \hline
+    Rod (Torsion)&$\frac{\pi}{2l}\sqrt{\frac{G}{\rho}}$&CF&1&0.375\\
+    \hline
+    Rod (Torsion)&$\frac{3\pi}{2l}\sqrt{\frac{G}{\rho}}$&CF&2&21.4\\
+    \hline
+    Beam (Local $y$ plane)&$22.3733\alpha$&FF&2&0.7\\
+    \hline
+    Beam (Local $y$ plane)&$61.6728\alpha$&FF&3&3.1\\
+    \hline
+    Beam (Local $y$ plane)&$\pi^2\alpha$&SS&1&$<$0.05\\
+    \hline
+    Beam (Local $y$ plane)&$4\pi^2\alpha$&SS&2&0.4\\
+    \hline
+%    Beam (Local $y$ plane)&&SS&3&\\
+%    \hline
+    Beam (Local $z$ plane)&$22.3733\alpha$&FF&2&0.7\\
+    \hline
+    Beam (Local $z$ plane)&$61.6728\alpha$&FF&3&3.1\\
+    \hline
+    Beam (Local $z$ plane)&$\pi^2\alpha$&SS&1&$<$0.05\\
+    \hline
+    Beam (Local $z$ plane)&$4\pi^2\alpha$&SS&2&0.4\\
+    \hline
+%    Beam (Local $z$ plane)&&SS&3&\\
+%    \hline
+  \end{tabular}
+\caption{Single finite element natural frequency estimate error relative to continuous theory. Circular cross sections assumed, with $G=1.5911\times 10^{10}$, $E= 4.1369\times 10^{10}$, $l=3.048$, $\rho=1.6608\times 10^3$, $I_{yy}=I_{zz}=7.0612\times 10^{-7}$, and $A=2.4322\times 10^{-4}$. For beam frequencies, $\alpha=\sqrt{\frac{E I}{\rho A l^4}}$.
+}
+\end{table}
+Material properties for the \command{beam3} element are better referred to as beam
+properties. They are entered using the material properties command and
+can be entered as any of the following forms:
+\begin{lstlisting}
+  element properties
+  E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3
+  E G rho A1 A2 J1 J2 Izz1 Izz2 Iyy1 Iyy2
+  E G rho A J Izz Iyy
+  E G rho A J Izz Iyy sx2 sy2 sz2 srx2 sry2 srz2 distype
+  E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
+      mx2 my2 mz2 mrx2 mry2 mrz2
+  E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
+      sx2 sy2 sz2 srx2 sry2 srz2 distype
+  E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
+      mx2 my2 mz2 mrx2 mry2 mrz2 sx2 sy2 sz2 srx2 sry2 srz2 distype
+  E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
+      mx2 my2 mz2 mrx2 mry2 mrz3 mx3 my3 mz3 mrx3 mry3 mrz3
+  E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
+      mx2 my2 mz2 mrx2 mry2 mrz2 sx2 sy2 sz2 srx2 sry2 srz2 ...
+      mx3 my3 mz3 mrx3 mry3 mrz3 sx3 sy3 sz3 srx3 sry3 srz3 distype
+  E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
+      mx2 my2 mz2 mrx2 mry2 mrz2 sx2 sy2 sz2 srx2 sry2 srz2 ...
+      lx2 ly2 lz2 lrx2 lry2 lrz2
+  E G rho A1 A2 A3 J1 J2 J3 Izz1 Izz2 Izz3 Iyy1 Iyy2 Iyy3 ...
+      mx2 my2 mz2 mrx2 mry2 mrz2 sx2 sy2 sz2 srx2 sry2 srz2 ...
+      lx2 ly2 lz2 lrx2 lry2 lrz2 ...
+      mx3 my3 mz3 mrx3 mry3 mrz3 sx3 sy3 sz3 srx3 sry3 srz3 ...
+      lx3 ly3 lz3 lrx3 lry3 lrz3
+\end{lstlisting}
+If the second format is used, a linear interpolation of the properties is presumed. If the third format is used, constant properties are assumed. In subsequent lines, initial deflections can be prescribed, deterministically, or stochastically (random). The character \command{m} stands for \emph{mean} value, and \command{r} stands for \emph{rotation} value. If a stochastic form is used, a distribution type must be prescribes. A \command{distype} of \command{0} means normal distribution with standard deviation of \command{s} values as prescribe. A \command{distype} of \command{-1} means uniform distribution with bounds relative to the mean set by the \command{s} values. A truncated Gaussian distribution is demonstrated in the last line. There the \command{l} values are limits relative to the mean (just as the \command{s} values for a uniform distribution). Note that the dots illustrate continuation of the same line. Continuations of a line using the M\textsc{atlab} notation \ldots can only be used in defining element properties. Torsional rigidity, $J$, must be less than or equal to $Iyy+Izz$ at any given cross section.
+
+In addition, the variable \command{DoverL} can be defined to override the warnings that occur if the beam is defined to have  $\frac{D}{l}<0.1$. This is generally not advisable, as beams with a small value of $\frac{D}{l}$ tend to behave much more like Timoshenko beams.
+
+
+
+\subsubsection{\command{inertia}}\label{el:inertia}
+The \command{inertia} element adds point masses and inertias.  The inertia properties can be entered in the following forms and are treated as a ``material type''.  In order of increasing complexity, the acceptable formats are:
+\begin{lstlisting}
+  element properties
+  m I
+  m Ixx Ixy Ixz Iyy Iyz Izz
+  m Ixx Ixy Ixz Iyy Iyz Izz l1x ly1 lz1 l2x l2y l2z
+\end{lstlisting}
+where the local $x$ coordinate points in the direction of the vector
+[l1x l1y l1z], and the local $y$ coordinate points in the direction of
+the vector [l2x l2y l2z]. Elements are defined using
+\begin{lstlisting}
+  inertia elements
+  node materialnumber
+\end{lstlisting}
+\subsubsection{\command{panel1}}
+A \command{panel1} element is a method used to mark panels for obtaining geometric output later. Element properties are simply the \emph{total} mass of the panel:
+\begin{lstlisting}
+  element properties
+  m
+\end{lstlisting}
+Elements are defined using
+\begin{lstlisting}
+  inertia elements
+  node1 node2 node3 node4 materialnumber
+\end{lstlisting}
+\subsubsection{\command{sensor}}
+A \command{sensor} element provides outputs of displacement, velocity, or acceleration to \command{y}. Property values 1, 2, and 3 represent displacement, velocity, or acceleration respectively. All 6 DOF are measured. If you want fewer, ignore the extras, or dispose of the appropriate rows in the output matrices.
+\subsubsection{\command{surfacenode}}
+A \command{surfacenode} element is a method used to mark nodes on a surface of importance for any given reason. The set of surface nodes provides the points included in any accuracy calculations to determine surface quality. \command{surfacenodes} have no material property, and are defined by only the node numbers.
+\end{document}
+% \end
+
+% Local Variables:
+% TeX-header-end: "% End-Of-Header"
+% TeX-trailer-start: "% Start-Of-Trailer"
+% TeX-command-default: "LaTeX"
+% TeX-master: "wfem"
+% End:
