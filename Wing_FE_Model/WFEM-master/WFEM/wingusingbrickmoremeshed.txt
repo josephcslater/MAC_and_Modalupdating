@@ -124,9 +124,6 @@ fix clamp
 9
 11
 % The preceeding put a clamp boundary condition on node 1.
-
-
-
 %fix rod
 %1 2 1
 %2 3 1
@@ -137,45 +134,6 @@ fix clamp
 %10 11 1
 %11 12 1
 
-load 
-% Node DOF Force
-%10 3 -10
-%11 3 -10
-%12 3 -10
-%16 3 -10
-
-
-actions
-modalanalysis
-who
-fs %dump sorted natural frequencies to the screen
-% The stuff inside actions is simply executed at the wfem prompt. Any
-% Matlab command can also be executed here. For example, you could double
-% the mass matrix then do another modal analysis. 
-% This will display natural frequencies and prompt for mode shape display
-%if uncommented
-modalreview
-fsold=fs %Let's store them for later comparison
-M=M/4; %Dividing M by 4 should double the natural frequencies
-fs=[]; % WFEM won't run another modal analysis unless I force it to 
-%It's smart enough to know that it has already been done, so I need to 
-%clear the results to it is forced to regenerate them with another
-%modalanalysis.
-modalanalysis
-disp('Natural Frequencies in KHz')
-fprintf('%7.3f %7.3f\n',[fsold'; fs'])
-disp('See, the natural frequency doubled as expected') % I wrote this out 
-%to the output for the user to read after execution.
-% Uncommenting this line will cause an exit from WFEM immediately after 
-% execution
-%end
-%Let's do static analysis
-staticanalysis
-plotdeformed
-%Here are the %%displacements, X
-%X
-[totalmass,INERTIATENSOR,CG]=FINDINERTIA
-end
 fix surfaceball
 3 1 0 0
 4 1 0 0
@@ -231,3 +189,47 @@ fix surfaceball
 58 1 0 0 
 59 1 0 0
 60 1 0 0
+
+load 
+% Node DOF Force
+%10 3 -10
+%11 3 -10
+%12 3 -10
+%16 3 -10
+
+
+actions
+modalanalysis
+who
+fs %dump sorted natural frequencies to the screen
+% The stuff inside actions is simply executed at the wfem prompt. Any
+% Matlab command can also be executed here. For example, you could double
+% the mass matrix then do another modal analysis. 
+% This will display natural frequencies and prompt for mode shape display
+%if uncommented
+modalreview
+fsold=fs %Let's store them for later comparison
+M=M/4; %Dividing M by 4 should double the natural frequencies
+fs=[]; % WFEM won't run another modal analysis unless I force it to 
+%It's smart enough to know that it has already been done, so I need to 
+%clear the results to it is forced to regenerate them with another
+%modalanalysis.
+modalanalysis
+disp('Natural Frequencies in KHz')
+fprintf('%7.3f %7.3f\n',[fsold'; fs'])
+disp('See, the natural frequency doubled as expected') % I wrote this out 
+%to the output for the user to read after execution.
+% Uncommenting this line will cause an exit from WFEM immediately after 
+% execution
+%end
+%Let's do static analysis
+staticanalysis
+plotdeformed
+%Here are the %%displacements, X
+%X
+%[totalmass,INERTIATENSOR,CG]=FINDINERTIA
+K
+Kr
+M
+Mr
+

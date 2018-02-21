@@ -1,10 +1,11 @@
 variables
 %All of these actions are not the most efficient for this problem.
-t1=10
-t2=10
+t1=35
+t2=18
 a=1778.01
 b=63.61
 l=285.94
+
 
 element properties
 % Beam format
@@ -17,9 +18,9 @@ element properties
 % Run "units" and type "who" to see variables/values available inside your
 % input file
 
-Brick_project2 elements
+brick8_SL elements
 %node1 node2 node3 pointnum (beam properties number)
-1 2 3 4 5 6 7 8 1 
+1 2 3 4 5 6 7 8 1 1
 
 nodes
 % I can include comment lines
@@ -47,11 +48,11 @@ fix clamp
 4
 % The preceeding put a clamp boundary condition on node 1.
 
-fix surfaceball
-5 1 1 0
-6 1 1 0
-7 1 1 0
-8 1 1 0
+%fix surfaceball
+%5 1 1 0
+%6 1 1 0
+%7 1 1 0
+%8 1 1 0
 %10 1 1 0
 
 
@@ -101,4 +102,10 @@ disp('See, the natural frequency doubled as expected') % I wrote this out
 staticanalysis
 plotdeformed
 %Here are the %%displacements, X
+
+
 %X
+%K
+%Kr
+%M
+%Mr

@@ -357,7 +357,7 @@ if strcmp(mode,'make')
   end
   mb;
   
-  
+ 
   
   % Assembling stiffness matrix into the complete elemental 
   % stiffness matrix. We're just telling the sub-elements to be put
@@ -380,9 +380,8 @@ if strcmp(mode,'make')
       end
   end
   m; 
- 
-  
-     
+
+
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
   % Coordinate rotations
@@ -444,12 +443,34 @@ if strcmp(mode,'make')
 
   bn1=bnodes(1);bn2=bnodes(2);bn3=bnodes(3);bn4=bnodes(4);
   bn5=bnodes(5);bn6=bnodes(6);bn7=bnodes(7);bn8=bnodes(8);
-%   indices=[bn1*3+(-2:0) bn2*3+(-2:0) bn3*3+(-2:0) bn4*3+(-2:0) bn5*3+(-2:0) bn6*3+(-2:0) bn7*3+(-2:0) bn8*3+(-2:0)] ;
+   %indices=[bn1*3+(-2:0) bn2*3+(-2:0) bn3*3+(-2:0) bn4*3+(-2:0) bn5*3+(-2:0) bn6*3+(-2:0) bn7*3+(-2:0) bn8*3+(-2:0)] ;
   indices=[bn1*6+(-5:0) bn2*6+(-5:0) bn3*6+(-5:0) bn4*6+(-5:0) bn5*6+(-5:0) bn6*6+(-5:0) bn7*6+(-5:0) bn8*6+(-5:0)] ;
-  
+  %indices=[bn1+(1:0) bn2+(1:0) bn3+(1:0) bn4+(1:0) bn5+(1:0) bn6+(1:0) bn7+(1:0) bn8+(1:0)] ;
   K(indices,indices)=K(indices,indices)+kg;
   M(indices,indices)=M(indices,indices)+mg;
-
+ % [fr,ms]=soeig(M,K,n)
+% master=[1;2;4;5;6;7;8;10;11;12;13;14;16;17;18;19;20;22;23;24;25;26;28;29;30;31;32;34;35;36;37;38;40;41;42;43;44;46;47;48];
+% master=[1;2;3;7;8;9;13;14;15;19;20;21;25;26;27;31;32;33;37;38;39;43;44;45];
+  % master=[3;4;5;6;9;10;11;12;15;16;17;18;21;22;23;24;27;28;29;30;33;34;35;36;39;40;41;42;45;46;47;48];
+   %master=[3;9;15;21;27;33;39;45];
+%    modes=[1,2,4,5,6];
+%    length(modes)
+%    [Mred,Kred,T]=modalreduction(M,K,modes)
+%    M=Mred;
+%    K=Kred;
+   % master=[3;9;15;21;27;33;39;45;51;57;63;69;75;81;87;93;99;105;111;117;123;129;135;141;147;153;159;165;171;177;183;189;195;201;207;213;219;225;231;237;243;249]';
+%length(master)
+ %[Mred,Kred,T,master,slave]=serep(M,K,master);
+ %M=Mred
+%K=Kred 
+%[P,w,S]=vtb4_1(M,K)
+%[KR,MR,T] = serep(K , M , SlaveDofs)
+%K=KR;
+%M=MR;
+%C=zeros(8,8);
+%[Freq,Recep,Mobil,Inert]=vtb7_5(real(Mred),C,real(Kred),1,1,linspace(0,.5,1024));
+%K=Kred;
+%M=Mred;
   % At this point we also know how to draw the element (what lines
   % and surfaces exist). For the brick8 element, 12 lines are
   % appropriate. Just add the pair of node numbers to the lines

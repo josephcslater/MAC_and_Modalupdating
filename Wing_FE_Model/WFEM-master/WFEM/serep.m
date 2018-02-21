@@ -32,8 +32,8 @@ function [Mred,Kred,T,master,slave]=serep(M,K,master)
 
 %
 % Copyright Joseph C. Slater, 6/12/2002
-  nm=length(master);
-  ndof=length(M);
+  nm=length(master)
+  ndof=length(M)
   % From $$$$$$ to $$$$$$ is the actual eigensolution.
   OPTS.issym=1;
   OPTS.isreal=1;
@@ -64,7 +64,7 @@ function [Mred,Kred,T,master,slave]=serep(M,K,master)
   T=zeros(ndof,nm);
   T(master,1:nm)=eye(nm);
   T(slave,1:nm)=phitr/phirr;
-  Mred=T'*M*T;
-  Kred=T'*K*T;
+  Mred=T'*M*T
+  Kred=T'*K*T
 end
 
