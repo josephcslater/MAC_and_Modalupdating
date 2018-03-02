@@ -1,0 +1,47 @@
+\BOOKMARK [1][-]{section.1}{Anatomy of the body of the code}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Running WFEM}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Linear Dynamic Analysis}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Guyan Reduction}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Plotting}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.5}{Plotting Stresses/Strains \(Not completed\)}{section.1}% 6
+\BOOKMARK [1][-]{section.2}{Entering data}{}% 7
+\BOOKMARK [2][-]{subsection.2.1}{Units}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.2}{Defined Constants}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.3}{Variables}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.4}{Parameters}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.5}{Defining Nodes}{section.2}% 12
+\BOOKMARK [1][-]{section.3}{Meshing}{}% 13
+\BOOKMARK [1][-]{section.4}{Boundary Conditions and Constraints}{}% 14
+\BOOKMARK [1][-]{section.5}{Applied Static Loads}{}% 15
+\BOOKMARK [1][-]{section.6}{Actions}{}% 16
+\BOOKMARK [2][-]{subsection.6.1}{plotundeformed}{section.6}% 17
+\BOOKMARK [2][-]{subsection.6.2}{findinitialstrain}{section.6}% 18
+\BOOKMARK [2][-]{subsection.6.3}{staticanalysis}{section.6}% 19
+\BOOKMARK [2][-]{subsection.6.4}{plotdeformed}{section.6}% 20
+\BOOKMARK [2][-]{subsection.6.5}{modalanalysis}{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.6}{modalreview}{section.6}% 22
+\BOOKMARK [2][-]{subsection.6.7}{reducedofs}{section.6}% 23
+\BOOKMARK [2][-]{subsection.6.8}{Find Inertia}{section.6}% 24
+\BOOKMARK [2][-]{subsection.6.9}{planefit}{section.6}% 25
+\BOOKMARK [2][-]{subsection.6.10}{end}{section.6}% 26
+\BOOKMARK [2][-]{subsection.6.11}{Matlab commands}{section.6}% 27
+\BOOKMARK [1][-]{section.7}{Elements}{}% 28
+\BOOKMARK [2][-]{subsection.7.1}{Element modes}{section.7}% 29
+\BOOKMARK [2][-]{subsection.7.2}{Required element modes}{section.7}% 30
+\BOOKMARK [3][-]{subsubsection.7.2.1}{generate}{subsection.7.2}% 31
+\BOOKMARK [3][-]{subsubsection.7.2.2}{make}{subsection.7.2}% 32
+\BOOKMARK [2][-]{subsection.7.3}{Highly recommended modes}{section.7}% 33
+\BOOKMARK [3][-]{subsubsection.7.3.1}{stressandstrain}{subsection.7.3}% 34
+\BOOKMARK [3][-]{subsubsection.7.3.2}{buckle}{subsection.7.3}% 35
+\BOOKMARK [2][-]{subsection.7.4}{Optional modes}{section.7}% 36
+\BOOKMARK [3][-]{subsubsection.7.4.1}{numofnodes}{subsection.7.4}% 37
+\BOOKMARK [2][-]{subsection.7.5}{Element tools available}{section.7}% 38
+\BOOKMARK [3][-]{subsubsection.7.5.1}{Gauss Legendre Integration}{subsection.7.5}% 39
+\BOOKMARK [2][-]{subsection.7.6}{Element types available}{section.7}% 40
+\BOOKMARK [3][-]{subsubsection.7.6.1}{rod3}{subsection.7.6}% 41
+\BOOKMARK [3][-]{subsubsection.7.6.2}{rod3t}{subsection.7.6}% 42
+\BOOKMARK [3][-]{subsubsection.7.6.3}{beam3}{subsection.7.6}% 43
+\BOOKMARK [3][-]{subsubsection.7.6.4}{inertia}{subsection.7.6}% 44
+\BOOKMARK [3][-]{subsubsection.7.6.5}{panel1}{subsection.7.6}% 45
+\BOOKMARK [3][-]{subsubsection.7.6.6}{sensor}{subsection.7.6}% 46
+\BOOKMARK [3][-]{subsubsection.7.6.7}{surfacenode}{subsection.7.6}% 47

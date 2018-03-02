@@ -1,0 +1,47 @@
+\contentsline {section}{\numberline {1}Anatomy of the body of the code}{5}{section.1}
+\contentsline {subsection}{\numberline {1.1}Running WFEM}{5}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Linear Dynamic Analysis}{5}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Guyan Reduction}{5}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Plotting}{6}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.5}Plotting Stresses/Strains (Not completed)}{6}{subsection.1.5}
+\contentsline {section}{\numberline {2}Entering data}{6}{section.2}
+\contentsline {subsection}{\numberline {2.1}Units}{8}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Defined Constants}{8}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Variables}{9}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Parameters}{9}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Defining Nodes}{9}{subsection.2.5}
+\contentsline {section}{\numberline {3}Meshing}{10}{section.3}
+\contentsline {section}{\numberline {4}Boundary Conditions and Constraints}{10}{section.4}
+\contentsline {section}{\numberline {5}Applied Static Loads}{12}{section.5}
+\contentsline {section}{\numberline {6}Actions}{13}{section.6}
+\contentsline {subsection}{\numberline {6.1}plotundeformed}{13}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}findinitialstrain}{13}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}staticanalysis}{13}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}plotdeformed}{13}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}modalanalysis}{14}{subsection.6.5}
+\contentsline {subsection}{\numberline {6.6}modalreview}{14}{subsection.6.6}
+\contentsline {subsection}{\numberline {6.7}reducedofs}{14}{subsection.6.7}
+\contentsline {subsection}{\numberline {6.8}Find Inertia}{14}{subsection.6.8}
+\contentsline {subsection}{\numberline {6.9}planefit}{14}{subsection.6.9}
+\contentsline {subsection}{\numberline {6.10}end}{14}{subsection.6.10}
+\contentsline {subsection}{\numberline {6.11}M{\textsc {atlab}} commands}{15}{subsection.6.11}
+\contentsline {section}{\numberline {7}Elements}{15}{section.7}
+\contentsline {subsection}{\numberline {7.1}Element modes}{15}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Required element modes}{15}{subsection.7.2}
+\contentsline {subsubsection}{\numberline {7.2.1}\textsf {generate}}{15}{subsubsection.7.2.1}
+\contentsline {subsubsection}{\numberline {7.2.2}\textsf {make}}{15}{subsubsection.7.2.2}
+\contentsline {subsection}{\numberline {7.3}Highly recommended modes}{16}{subsection.7.3}
+\contentsline {subsubsection}{\numberline {7.3.1}\textsf {stressandstrain}}{16}{subsubsection.7.3.1}
+\contentsline {subsubsection}{\numberline {7.3.2}\textsf {buckle}}{16}{subsubsection.7.3.2}
+\contentsline {subsection}{\numberline {7.4}Optional modes}{16}{subsection.7.4}
+\contentsline {subsubsection}{\numberline {7.4.1}numofnodes}{16}{subsubsection.7.4.1}
+\contentsline {subsection}{\numberline {7.5}Element tools available}{16}{subsection.7.5}
+\contentsline {subsubsection}{\numberline {7.5.1}Gauss Legendre Integration}{16}{subsubsection.7.5.1}
+\contentsline {subsection}{\numberline {7.6}Element types available}{17}{subsection.7.6}
+\contentsline {subsubsection}{\numberline {7.6.1}\textsf {rod3}}{17}{subsubsection.7.6.1}
+\contentsline {subsubsection}{\numberline {7.6.2}\textsf {rod3t}}{18}{subsubsection.7.6.2}
+\contentsline {subsubsection}{\numberline {7.6.3}\textsf {beam3}}{18}{subsubsection.7.6.3}
+\contentsline {subsubsection}{\numberline {7.6.4}\textsf {inertia}}{20}{subsubsection.7.6.4}
+\contentsline {subsubsection}{\numberline {7.6.5}\textsf {panel1}}{21}{subsubsection.7.6.5}
+\contentsline {subsubsection}{\numberline {7.6.6}\textsf {sensor}}{21}{subsubsection.7.6.6}
+\contentsline {subsubsection}{\numberline {7.6.7}\textsf {surfacenode}}{21}{subsubsection.7.6.7}
