@@ -47,7 +47,7 @@ if isempty(fs)|restart==0,% This is old stuff from previous restart
 %[1;2;3;7;8;9;13;14;15;19;20;21;25;26;27;31;32;33;37;38;39;43;44;45;49;50;51;55;56;57;61;62;63;67;68;69;73;74;75;79;80;81;85;86;87;91;92;93;97;98;99;103;104;105;109;110;111;115;116;117;121;122;123;127;128;129;133;134;135;139;140;141;145;146;147;151;152;153;157;158;159;163;164;165;169;171;171;175;176;177;181;182;183;187;188;189;193;194;195;199;200;201;205;206;207;211;212;213;217;218;219;223;224;225;229;230;231;235;236;237;241;242;243;247;248;249]'
 %master2=[1:8];
 master1=i(lslave+1:size(nodes,1)*6)%The master coordinates are
-master2=[1:8];                                       %the ones that we didn't
+%master2=[1:8];                                       %the ones that we didn't
                                        %reduce out via some
                                        %constraints. The master
                                        %coordinates are all of the
@@ -58,8 +58,8 @@ master2=[1:8];                                       %the ones that we didn't
                                        %DOFS. The upper limit of
                                        %size(nodes,1)*6 fixes this
                                        %at the last real DOF.
-   [Mr,Kr,T,master,slave]=guyan(M,K,master1)
-[Mred,Kred,T,master,slave]=serep(Mr,Kr,master2)
+   [Mred,Kred,T,master,slave]=guyan(M,K,master1)
+%[Mred,Kred,T,master,slave]=serep(Mr,Kr,master2)
   else
     [Mr,Kr,T,master,slave]=guyan(M,K)
     
