@@ -1,14 +1,16 @@
-# Model Assurance Criterion and Model correction 
-This is an Independent study on Modal Analysis and FEA Test correlation of a cruise missile wing. Wing-FE was modeled using WFEM(Matlab) module. Testing was conducted in a Laboratory enviroment using impact testing methodology using NIMAX DAQ via OpenModal(Python)  module.
-The comparison and correction techniques were systematically done in Jupyter notebook.
+# Model Assurance Criterion and Model correction or updating: 
 
-## Links to Packages and Paper Used
+This is an Independent study on Modal Analysis and FEA Test correlation of a cruise missile wing. Wing-FE was modeled using WFEM(Matlab) module by developing a code and input file for 3D beam/rod/torsion element(6 d.o.f/node) and 8 noded Brick element for Modeling and Analysis . Testing was conducted in a Laboratory environment using impact testing methodology using NIMAX DAQ sytem for collecting data via OpenModal(Python)  software which had been completely installed with the lab test equipment and validated with existing Bobcat DAQ results.
+The comparison and correction or modal updating techniques were systematically done in Jupyter notebook.
+
+## References to Modules and Books Used:
+
 [WFEM](https://github.com/josephcslater/WFEM) : created by Dr. Joseph Slater
 
-[OpenModal](https://github.com/openmodal/OpenModal) 
+(https://github.com/openmodal/OpenModal) : created as an Opensource software for Vibration Testing with excellent capabilities. 
 
 [vibrationtesting](https://github.com/Vibration-Testing/vibrationtesting) : created by Dr. Joseph Slater
 
 [Vibration Toolbox]( https://github.com/vibrationtoolbox/vibration_toolbox.git) : created by Dr. Joseph Slater
   
-[Finite Element Model Updating in Structural Dynamics] by M.I. Friswell and J.E. Mottershead
+Finite Element Model Updating in Structural Dynamics by M.I. Friswell and J.E. Mottershead
