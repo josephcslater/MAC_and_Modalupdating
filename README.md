@@ -5,12 +5,13 @@ The comparison and correction or modal updating techniques were systematically d
 
 ## References to Modules and Books Used:
 
-[WFEM](https://github.com/josephcslater/WFEM) : created by Dr. Joseph Slater
+[WFEM](https://github.com/josephcslater/WFEM) : by Dr. Joseph Slater
 
-(https://github.com/openmodal/OpenModal) : created as an Opensource software for Vibration Testing with excellent capabilities. 
+[OpenModal](https://github.com/openmodal/OpenModal) : created as an Opensource software written in 
+Python for Vibration Testing with excellent capabilities. 
 
-[vibrationtesting](https://github.com/Vibration-Testing/vibrationtesting) : created by Dr. Joseph Slater
+[vibrationtesting](https://github.com/Vibration-Testing/vibrationtesting) : by Dr. Joseph Slater
 
-[Vibration Toolbox]( https://github.com/vibrationtoolbox/vibration_toolbox.git) : created by Dr. Joseph Slater
+[Vibration Toolbox]( https://github.com/vibrationtoolbox/vibration_toolbox.git) : by Dr. Joseph Slater
   
 Finite Element Model Updating in Structural Dynamics by M.I. Friswell and J.E. Mottershead
