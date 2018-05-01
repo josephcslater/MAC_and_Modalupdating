@@ -22,3 +22,5 @@ Python for Vibration Testing with excellent capabilities.
 Finite Element Model Updating in Structural Dynamics by M.I. Friswell and J.E. Mottershead
 
 Concepts and Applications of Finite Element Analysis, Fourth edition by Robert D. Cook, David S. Malkus, Michael E. Plesha and Robert J. Witt
+
+[Siemens Corp. MAC](https://community.plm.automation.siemens.com/t5/Testing-Knowledge-Base/Modal-Assurance-Criterion-MAC/ta-p/368008)
