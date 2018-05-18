@@ -1,12 +1,12 @@
 # Model Assurance Criterion and Model correction or updating: 
 
-This is an Independent study to explore Modal Updating of FE models using Test data. 
+This is an Independent Research study to explore Modal Updating of FE models using Test data. 
 
-FE models like 3D Beam and 8 noded Brick elements were coded in MATLAB and validated with Ansys Apdl. 
+FE models using 6 d.o.f/node Beam element and 8 noded Brick element were coded in MATLAB which had been validated with Ansys Apdl. 
 
 Testing was done in a laboratory environment using an open source experimental modal analysis software called "OpenModal" which had been validated with existing Bobcat commercial software.
 
-The project is systematically explained in the Python jupyter notebook.
+The project is systematically explained in the [Python jupyter notebook](https://github.com/sainag2473/MAC_and_Modalupdating/blob/master/MAC_JupyterNotebook/MACandModelCorrection.ipynb)
 
 ## References to Modules and Books Used:
 
