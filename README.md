@@ -2,7 +2,7 @@
 
 This is an Independent Research study to explore Modal Updating of FE models using Test data. 
 
-Purpose of bridging the gap between NVH and CAE: Product development cycle have been modifying every now and then, at present most of the companies don't use simulation unless they first establish trust. So, first preference is given to validation at the test condition to use the right modeling techniques in simulation so that the variations can be looked at and the model could be used for development a head of time to see certain phenomenon that would replicate real world. 
+Purpose of bridging the gap between NVH and CAE: Product development process have been modifying every now and then, at present most of the companies don't use simulation unless they first establish trust. So, first preference is given to validation at the test condition to use the right modeling techniques in simulation so that the variations can be looked at and the model could be used for development a head of time to see certain phenomenon that would replicate real world. 
 
 Repository contains details of the following:
 FE models using 6 d.o.f/node Beam element and 8 noded Brick element were coded in MATLAB which had been validated with Ansys Apdl. 
