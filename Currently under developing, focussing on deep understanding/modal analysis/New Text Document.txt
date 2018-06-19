@@ -1,0 +1,5 @@
+hammertime=1
+responsetime=2
+hammerpsd=3
+responsepsd=4
+csd=5
