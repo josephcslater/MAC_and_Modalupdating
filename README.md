@@ -1,15 +1,30 @@
 # Model Assurance Criterion and Model correction or updating: 
 
-This is an Independent Research study to explore Modal Updating of FE models using Test data. 
+This is a study to explore Modal Analysis, Correlation and Modal Updating of FE models using Test data. 
 
-Purpose of bridging the gap between Testing and FE-simulation: Product development process have been modifying every now and then, at present most of the companies don't use simulation unless they first establish trust. So, first preference is given to validation at the test condition to use the right modeling techniques in simulation so that the variations can be looked at and the model could be used for development a head of time to see certain phenomenon that would replicate real world. 
+The project is systematically explained in the [Python jupyter notebook](https://github.com/sainag2473/MAC_and_Modalupdating/blob/master/MAC_JupyterNotebook/MACandModelCorrection.ipynb)
+
+## Purpose of bridging the gap between Testing and FE-Simulation:
+
+
+**Product Development Process:** There are five phases in this process along the cost curve.
+
+- Top two phases: **Concept and Detail Drawing**, in these phases, the CAD and FEA simulation play the major role. So, any change of product design is very inexpensive and it doesn't take much time for modifications.
+
+
+- Next two phases: **Prototype and Production**: in these phases, it becomes little bit more expensive to change the aspects of the product design. So, it gets more expensive as we move forward.
+
+
+- Final phase: **Field Failure (Testing)**, this is the phase where product recalls occur to make a major design change and it gets much more expensive.
+
+To avoid this sort of serious field failure, it is important to combine the testing and the simulation so that validating not only the physical design but also whether the FE simulation is correct. So, the first preference is given to validation at the test condition to use the right modeling technique in simulation to look at the variations and develop the model a head of time to see certain phenomenon that would replicate the real world.
 
 Repository contains details of the following:
 FE models using 6 d.o.f/node Beam element and 8 noded Brick element were coded in MATLAB which had been validated with Ansys Apdl. 
 
 Testing was done in a laboratory environment using an open source experimental modal analysis software called "OpenModal" which had been validated with existing Bobcat commercial software.
 
-The project is systematically explained in the [Python jupyter notebook](https://github.com/sainag2473/MAC_and_Modalupdating/blob/master/MAC_JupyterNotebook/MACandModelCorrection.ipynb)
+
 
 ## References to Modules and Books Used:
 
