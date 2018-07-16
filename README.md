@@ -1,4 +1,3 @@
-# Model Assurance Criterion and Model correction or updating: 
 
 This is a study to explore Modal Analysis, Correlation and Modal Updating of FE models using Test data. 
 
