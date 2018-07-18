@@ -6,17 +6,19 @@ The project is systematically explained in the [Python jupyter notebook](https:/
 ## Purpose of bridging the gap between Testing and FE-Simulation:
 
 
-**Product Development Process:** There are five phases in this process along the cost curve.
+**Product Development Process:** There are five phases in this process along the cost of change curve.
 
 - Top two phases: **Concept and Detail Drawing**, in these phases, the CAD and FEA simulation play the major role. So, any change of product design is very inexpensive and it doesn't take much time for modifications.
 
 
-- Next two phases: **Prototype and Production**: in these phases, it becomes little bit more expensive to change the aspects of the product design. So, it gets more expensive as we move forward.
+- Next two phases: **Prototype and Production**: in these phases which are sort of testing phase, it becomes little bit more expensive to change the aspects of the product's design. So, it gets more expensive as we move forward in time.
 
 
-- Final phase: **Field Failure (Testing)**, this is the phase where product recalls occur to make a major design change and it gets much more expensive.
+- Final phase: **Field Failure **, this is the phase where product recalls occur to make a major design change and it gets much more expensive.
 
-To avoid this sort of serious field failure, it is important to combine the testing and the simulation so that validating not only the physical design but also whether the FE simulation is correct. So, the first preference is given to validation at the test condition to use the right modeling technique in simulation to look at the variations and develop the model a head of time to see certain phenomenon that would replicate the real world.
+
+To avoid this sort of serious field failure, it is important to combine the testing and the simulation so that validating not only the physical design but also whether the assumption made for the FE simulation is correct. So, the first preference is given to validation at the test condition to use the right modeling technique in simulation to look at the variations and develop the model a head of time to see certain phenomenon that would replicate the real world.
+
 
 Repository contains details of the following:
 FE models using 6 d.o.f/node Beam element and 8 noded Brick element were coded in MATLAB which had been validated with Ansys Apdl. 
