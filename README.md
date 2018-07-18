@@ -20,7 +20,9 @@ The project is systematically explained in the [Python jupyter notebook](https:/
 To avoid this sort of serious field failure, it is important to combine the testing and the simulation so that validating not only the physical design but also whether the assumption made for the FE simulation is correct. So, the first preference is given to validation at the test condition to use the right modeling technique in simulation to look at the variations and develop the model a head of time to see certain phenomenon that would replicate the real world.
 
 
-Repository contains details of the following:
+**Repository contains details of the following**:
+
+
 FE models using 6 d.o.f/node Beam element and 8 noded Brick element were coded in MATLAB which had been validated with Ansys Apdl. 
 
 Testing was done in a laboratory environment using an open source experimental modal analysis software called "OpenModal" which had been validated with existing Bobcat commercial software.
