@@ -14,7 +14,7 @@ The project is systematically explained in the [Python jupyter notebook](https:/
 - Next two phases: **Prototype and Production**: in these phases which are sort of testing phase, it becomes little bit more expensive to change the aspects of the product's design. So, it gets more expensive as we move forward in time.
 
 
-- Final phase: **Field Failure **, this is the phase where product recalls occur to make a major design change and it gets much more expensive.
+- Final phase: **Field Failure** : this is the phase where product recalls occur to make a major design change and it gets much more expensive.
 
 
 To avoid this sort of serious field failure, it is important to combine the testing and the simulation so that validating not only the physical design but also whether the assumption made for the FE simulation is correct. So, the first preference is given to validation at the test condition to use the right modeling technique in simulation to look at the variations and develop the model a head of time to see certain phenomenon that would replicate the real world.
