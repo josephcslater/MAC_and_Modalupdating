@@ -14,7 +14,7 @@ The project is systematically explained in the [Python jupyter notebook](https:/
 - Next two phases: **Prototype and Production**: in these phases which are sort of testing phase, it becomes little bit more expensive to change the aspects of the product's design. So, it gets more expensive as we move forward in time.
 
 
-- Final phase: **Field Failure **, this is the phase where product recalls occur to make a major design change and it gets much more expensive.
+- Final phase: **Field Failure**, this is the phase where product recalls occur to make a major design change and it gets much more expensive.
 
 
 Serious field failure in the final phase is because often times the biggest loss of opportunity is correlating the test data obtained in the 3rd-4th phases to the simulation model in 1st-2nd phases, this results in a FE model that would not accurately represents the real world. Because of the fact that the FE model is used in conducting different analysis such as vibration analysis, loads analysis, acoustics, durability etc., it is important prior to doing these analysis that FE model is updated using test data so that the model is developed a head of time to represent real world. Hence, we need to have the base FE model as accurate as possible as far as Mass, Stiffness, Damping, Natural Frequency, and mode shapes. 
