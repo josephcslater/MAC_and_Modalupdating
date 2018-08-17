@@ -39,6 +39,8 @@ Python for Vibration Testing with excellent capabilities.
 [vibrationtesting](https://github.com/Vibration-Testing/vibrationtesting) : by Dr. Joseph Slater
 
 [Vibration Toolbox]( https://github.com/vibrationtoolbox/vibration_toolbox.git) : by Dr. Joseph Slater
+
+Slater, J. C., Vibration Testing, with Modal Analysis and Health Monitoring, John Wiley & Sons, Ltd, 2002
   
 Finite Element Model Updating in Structural Dynamics by M.I. Friswell and J.E. Mottershead
 
