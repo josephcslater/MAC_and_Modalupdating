@@ -48,5 +48,5 @@ Concepts and Applications of Finite Element Analysis, Fourth edition by Robert D
 
 [Siemens Corp. Seminar](https://community.plm.automation.siemens.com/t5/Event-Collateral/Modal-Analysis-and-FEA-Test-Correlation/ta-p/435288): Presenter were Mr Scott Beebe and Ms Jacklyn Kinsler
 
-[Bruel & Kjaer Training course](https://bksv.com/en/Training/training-courses/UnitedStates/UnitedStates/Live-Courses/Modal-Analysis/05-15-2018): Some Pictures and Bulletin points were taken directly from Modal Analysis Conference conducted by Bruel and Kjaer, Chicago, May2018.
-Mr Robert Trepanier is the presenter who has more than 30 years of experience, I strongly suggest to attend for good understanding of Modal Analysis.
+[Bruel & Kjaer Sound and Vibration Conference](https://bksv.com/en/Training/training-courses/UnitedStates/UnitedStates/Live-Courses/Modal-Analysis/05-15-2018): Some Pictures and Bulletin points were taken directly from Modal Analysis Conference conducted by Bruel and Kjaer, Chicago, May2018.
+Mr Robert Trepanier is the presenters who has more than 30 years of experience, I strongly suggest to attend for good understanding of Modal Analysis.
