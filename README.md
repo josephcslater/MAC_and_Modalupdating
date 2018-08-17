@@ -46,7 +46,7 @@ Finite Element Model Updating in Structural Dynamics by M.I. Friswell and J.E. M
 
 Concepts and Applications of Finite Element Analysis, Fourth edition by Robert D. Cook, David S. Malkus, Michael E. Plesha and Robert J. Witt
 
-[Siemens Corp. Seminar](https://community.plm.automation.siemens.com/t5/Event-Collateral/Modal-Analysis-and-FEA-Test-Correlation/ta-p/435288)
+[Siemens Corp. Seminar](https://community.plm.automation.siemens.com/t5/Event-Collateral/Modal-Analysis-and-FEA-Test-Correlation/ta-p/435288): Presenter were Mr Scott Beebe and Ms Jacklyn Kinsler
 
-Some Pictures and Bulletin points were taken directly from Modal Analysis Conference conducted by Bruel and Kjaer, Chicago, May2018.
+[Bruel & Kjaer Training course](https://bksv.com/en/Training/training-courses/UnitedStates/UnitedStates/Live-Courses/Modal-Analysis/05-15-2018): Some Pictures and Bulletin points were taken directly from Modal Analysis Conference conducted by Bruel and Kjaer, Chicago, May2018.
 Mr Robert Trepanier is the presenter who has more than 30 years of experience, I strongly suggest to attend for good understanding of Modal Analysis.
