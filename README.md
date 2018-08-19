@@ -1,7 +1,13 @@
 
 This is a study to explore Modal Analysis, Correlation and Modal Updating of FE models using Test data. In addition, Modal Analysis using Polyreference Technique for Symmetric bodies.
 
-The project is systematically explained in the [Python Jupyter Notebook](https://github.com/sainag2473/MAC_and_Modalupdating/blob/master/MAC_JupyterNotebook/MACandModelCorrection.ipynb)
+The project is systematically explained, can be viewed here: [Python Jupyter Notebook](https://github.com/sainag2473/MAC_and_Modalupdating/blob/master/MAC_JupyterNotebook/MACandModelCorrection.ipynb)
+
+
+Edit the Jupyter notebook live in the browser. Click on the link to edit the Jupyter notebook, no python installation required, the code can be run live, any corrections of typos and any addition of signal processing of the data such as using filters etc,. is welcomed for a pull request  [Edit Python Jupyter Notebook](https://hub.mybinder.org/user/sainag2473-moda-d_modalupdating-ejnxxbty/notebooks/MAC_JupyterNotebook/MACandModelCorrection.ipynb)
+
+
+
 
 **Product Development Process:** There are five phases in this process along the cost of change curve.
 
