@@ -1,4 +1,8 @@
 
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/sainag2473/ModalAnalysis_MAC_and_Modalupdating/master)
+
+
+
 This is a study to explore Modal Analysis, Correlation and Modal Updating of FE models using Test data. In addition, Modal Analysis using Polyreference Technique for Symmetric bodies.
 
 The project is systematically explained, can be viewed here: [Python Jupyter Notebook](https://github.com/sainag2473/MAC_and_Modalupdating/blob/master/MAC_JupyterNotebook/MACandModelCorrection.ipynb)
