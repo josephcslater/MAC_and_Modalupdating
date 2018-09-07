@@ -60,3 +60,8 @@ Concepts and Applications of Finite Element Analysis, Fourth edition by Robert D
 
 [Bruel & Kjaer Sound and Vibration Conference](https://bksv.com/en/Training/training-courses/UnitedStates/UnitedStates/Live-Courses/Modal-Analysis/05-15-2018): Some Pictures and Bulletin points were taken directly from Modal Analysis Conference conducted by Bruel and Kjaer, Chicago, May2018.
 Mr Robert Trepanier is the presenters who has more than 30 years of experience, I strongly suggest to attend for good understanding of Modal Analysis.
+
+
+## Copyright
+
+ This book is provided as [Open Educational Resource](https://en.wikipedia.org/wiki/Open_educational_resources). you can freely use this notebook for educational/academic purposes.
