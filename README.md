@@ -32,10 +32,16 @@ Therefore, it is important to combine the testing and the simulation so that val
 
 **Repository contains details of the following**:
 
-
-FE models using 6 d.o.f/node Beam element and 8 noded Brick element were coded in MATLAB which had been validated with Ansys Apdl. 
+FE data
 
 Testing was done in a laboratory environment using an open source experimental modal analysis software called "OpenModal" which had been validated with existing Bobcat commercial software.
+
+### Other related projects:
+
+[Wing Modelled using Brick Element](https://github.com/sainag2473/Project_2) 
+
+
+[Wing Modelled using Beam Element](https://github.com/sainag2473/Project_1) 
 
 
 
